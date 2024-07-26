@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <h1>Hello {{ person }}!</h1>
+    
+    <button onclick="changeNameRender()">(Test render) Change name to "Bob"</button>
+    <button onclick="changeNameRedirect()">(Test redirect) Change name to "Bob"</button>
+    
+    <script>
+        function changeNameRender() {
+            $.get("/test_render/", { name: "Bob" });
+        }
+        function changeNameRedirect() {
+            $.get("/test_redirect/", { r: 1, name: "Bob" });
+        }
+    </script>
+
+</body>
+</html>
