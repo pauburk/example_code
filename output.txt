@@ -1,0 +1,22 @@
+$ flask --app app_simple run
+
+ * Serving Flask app 'app_simple'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+
+127.0.0.1 - - [26/Jul/2024 09:40:35] "GET / HTTP/1.1" 302 -
+
+127.0.0.1 - - [26/Jul/2024 09:40:35] "GET /test_render/ HTTP/1.1" 200 -    # correctly redirects to /test_render/
+
+127.0.0.1 - - [26/Jul/2024 09:40:37] "GET /test_render/?name=Bob HTTP/1.1" 200 -	    # page does not change upon clicking the button even though the request seems accurate here
+
+rendering...
+127.0.0.1 - - [26/Jul/2024 09:40:48] "GET /test_redirect/?name=Paul HTTP/1.1" 200 -    # I manually typed this url into the browser
+
+redirecting to '/test_redirect/?name=Bob'...
+127.0.0.1 - - [26/Jul/2024 09:40:50] "GET /test_redirect/?r=1&name=Bob HTTP/1.1" 302 -    # “test redirect” button clicked
+
+rendering...
+127.0.0.1 - - [26/Jul/2024 09:40:50] "GET /test_redirect/?name=Bob HTTP/1.1" 200 - # page has not changed (name still shows as Paul) and url has not changed either
